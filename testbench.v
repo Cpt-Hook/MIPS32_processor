@@ -37,7 +37,10 @@ module data_mem (input clk, we,
 
 	reg [31:0] RAM[63:0];
 
+  integer i;
 	initial begin
+    $dumpfile("test");
+    for(i = 0; i < 64; i = i + 1) $dumpvars(0, RAM[i]);
 		$readmemh ("memfile_data.hex",RAM,0,63);
 	end
 
@@ -53,7 +56,10 @@ module inst_mem (input  [5:0]  address,
 		 output [31:0] rd);
 
 	reg [31:0] RAM[63:0];
+  integer i;
 	initial begin
+    $dumpfile("test");
+    for(i = 0; i < 64; i = i + 1) $dumpvars(0, RAM[i]);
 		$readmemh ("memfile_inst.hex",RAM,0,63);
 	end
 	assign rd=RAM[address]; // word aligned
