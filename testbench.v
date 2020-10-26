@@ -10,7 +10,7 @@ module testbench();
 		$dumpfile("test");
 		$dumpvars;
 		reset<=1; # 2; reset<=0;
-		#100; $finish;
+		#1024; $finish;
 	end
 
 	// generate clock
