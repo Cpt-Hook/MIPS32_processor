@@ -1,6 +1,10 @@
-module control_unit(input [5:0] opcode, funct, input [4:0] shamt,
-                    output PCSrcJal, PCSrcJr, RegWrite, MemToReg, MemWrite, ALUSrc, RegDst, Branch,
-                    output [3:0] ALUControl);
+module control_unit(
+    input [5:0] opcode, funct,
+    input [4:0] shamt,
+    output PCSrcJal, PCSrcJr, RegWrite, MemToReg, MemWrite, ALUSrc, RegDst, Branch,
+    output [3:0] ALUControl
+);
+
     wire [1:0] ALUOp;
 
     main_decoder main_decoder(opcode, PCSrcJal, PCSrcJr, RegWrite, MemToReg, MemWrite, ALUSrc, RegDst, Branch, ALUOp);
@@ -8,9 +12,12 @@ module control_unit(input [5:0] opcode, funct, input [4:0] shamt,
 endmodule
 
 
-module main_decoder(input[5:0] opcode,
-                    output reg PCSrcJal, PCSrcJr, RegWrite, MemToReg, MemWrite, ALUSrc, RegDst, Branch,
-                    output reg [1:0] ALUOp);
+module main_decoder(
+    input[5:0] opcode,
+    output reg PCSrcJal, PCSrcJr, RegWrite, MemToReg, MemWrite, ALUSrc, RegDst, Branch,
+    output reg [1:0] ALUOp
+);
+
     always@(*) begin
         case (opcode)
             'b000000: begin // R type instruction
@@ -116,8 +123,13 @@ module main_decoder(input[5:0] opcode,
     end
 endmodule
 
-module alu_op_decoder(input [1:0] ALUOp, input[4:0] shamt, input[5:0] funct,
-                      output reg [3:0] ALUControl);
+module alu_op_decoder(
+    input [1:0] ALUOp,
+    input[4:0] shamt,
+    input[5:0] funct,
+    output reg [3:0] ALUControl
+);
+
     always @(*) begin
         case (ALUOp)
             'b00: ALUControl = 'b0010; // addition

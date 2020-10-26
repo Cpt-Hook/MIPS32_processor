@@ -1,5 +1,9 @@
-module register_block(input [4:0] a1, a2, a3, input clk, we3, input [31:0] wd3, 
-                      output [31:0] rd1, rd2);
+module register_block(
+    input [4:0] a1, a2, a3,
+    input clk, we3,
+    input [31:0] wd3, 
+    output [31:0] rd1, rd2
+);
 
     reg [31:0] registers [31:0];
 

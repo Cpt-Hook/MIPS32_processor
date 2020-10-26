@@ -1,6 +1,9 @@
-module alu
-    (input [31:0] srcA, srcB, input [3:0] ALUControl,
-     output reg [31:0] result, output zero);
+module alu(
+    input [31:0] srcA, srcB,
+    input [3:0] ALUControl,
+    output reg [31:0] result,
+    output zero
+);
 
     assign zero = (result == 0? 1 : 0);
 

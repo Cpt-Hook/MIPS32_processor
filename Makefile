@@ -5,13 +5,13 @@ simulate: test  # starts gtkwave with simulation of the processor
 
 assemble_processor: processor.v # assembles processor.v ready for submission (or compilation)
 
-test: testbench.out
+test: testbench.out memfile_inst.hex memfile_data.hex
 	./testbench.out
 
 testbench.out: processor.v testbench.v
 	iverilog processor.v testbench.v -o testbench.out
 
-processor.v: components/processor.v components/alu.v components/control_unit.v components/register_block.v
+processor.v: components/processor.v components/alu.v components/control_unit.v components/register_block.v components/sign_extender_16_32.v components/multiplier4.v components/adder.v components/register.v
 	cat $^ > processor.v
 
 clean:
