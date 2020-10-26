@@ -23,7 +23,7 @@ module processor( input         clk, reset,
     assign Instr = instruction;
     
     wire [31:0] four;
-    assign four = 3;
+    assign four = 4;
 
     wire [31:0] PCJal;
     assign PCJal = {PCPlus4[31:28], Instr[25:0], logical0, logical0};
