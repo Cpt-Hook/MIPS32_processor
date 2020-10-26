@@ -11,7 +11,7 @@ test: testbench.out
 testbench.out: processor.v testbench.v
 	iverilog processor.v testbench.v -o testbench.out
 
-processor.v: components/processor.vcomponents/alu.v components/control_unit.v components/register_block.v
+processor.v: components/processor.v components/alu.v components/control_unit.v components/register_block.v
 	cat $^ > processor.v
 
 clean:
