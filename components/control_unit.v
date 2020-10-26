@@ -37,23 +37,23 @@ module main_decoder(input[5:0] opcode,
             end
             'b101011: begin // sw
                 RegWrite = 'b0;
-                RegDst = 'b?;
+                RegDst = 'b0;
                 ALUSrc = 'b1;
                 ALUOp = 'b00;
                 Branch = 'b0;
                 MemWrite = 'b1;
-                MemToReg = 'b?;
+                MemToReg = 'b0;
                 PCSrcJal = 'b0;
                 PCSrcJr = 'b0;
             end
             'b000100: begin // beq
                 RegWrite = 'b0;
-                RegDst = 'b?;
+                RegDst = 'b0;
                 ALUSrc = 'b0;
                 ALUOp = 'b01;
                 Branch = 'b1;
                 MemWrite = 'b0;
-                MemToReg = 'b?;
+                MemToReg = 'b0;
                 PCSrcJal = 'b0;
                 PCSrcJr = 'b0;
             end
@@ -70,23 +70,23 @@ module main_decoder(input[5:0] opcode,
             end
             'b000011: begin // jal
                 RegWrite = 'b1;
-                RegDst = 'b?;
-                ALUSrc = 'b?;
-                ALUOp = 'b??;
-                Branch = 'b?;
+                RegDst = 'b0;
+                ALUSrc = 'b0;
+                ALUOp = 'b00;
+                Branch = 'b0;
                 MemWrite = 'b0;
-                MemToReg = 'b?;
+                MemToReg = 'b0;
                 PCSrcJal = 'b1;
                 PCSrcJr = 'b0;
             end
             'b000111: begin // jr
                 RegWrite = 'b0;
-                RegDst = 'b?;
-                ALUSrc = 'b?;
-                ALUOp = 'b??;
-                Branch = 'b?;
+                RegDst = 'b0;
+                ALUSrc = 'b0;
+                ALUOp = 'b00;
+                Branch = 'b0;
                 MemWrite = 'b0;
-                MemToReg = 'b?;
+                MemToReg = 'b0;
                 PCSrcJal = 'b0;
                 PCSrcJr = 'b1;
             end
@@ -102,15 +102,15 @@ module main_decoder(input[5:0] opcode,
                 PCSrcJr = 'b0;
             end
             default: begin
-                RegWrite = 'b?;
-                RegDst = 'b?;
-                ALUSrc = 'b?;
-                ALUOp = 'b??;
-                Branch = 'b?;
-                MemWrite = 'b?;
-                MemToReg = 'b?;
-                PCSrcJal = 'b?;
-                PCSrcJr = 'b?;
+                RegWrite = 'b0;
+                RegDst = 'b0;
+                ALUSrc = 'b0;
+                ALUOp = 'b00;
+                Branch = 'b0;
+                MemWrite = 'b0;
+                MemToReg = 'b0;
+                PCSrcJal = 'b0;
+                PCSrcJr = 'b0;
             end
         endcase
     end
@@ -129,7 +129,7 @@ module alu_op_decoder(input [1:0] ALUOp, input[4:0] shamt, input[5:0] funct,
                     'b100100: ALUControl = 'b0000; //and
                     'b100101: ALUControl = 'b0001; //or
                     'b101010: ALUControl = 'b0111; //slt
-                     default: ALUControl = 'b????;
+                     default: ALUControl = 'b0000;
                 endcase
             end
             'b11: begin
@@ -137,12 +137,12 @@ module alu_op_decoder(input [1:0] ALUOp, input[4:0] shamt, input[5:0] funct,
                     case (shamt)
                         'b000000: ALUControl = 'b1000; //addition byte after byte
                         'b001000: ALUControl = 'b0111; //saturated addition byte after byte
-                         default: ALUControl = 'b????;
+                         default: ALUControl = 'b0000;
                     endcase
                 else 
-                    ALUControl = 'b????;
+                    ALUControl = 'b0000;
             end
-            default: ALUControl = 'b????;
+            default: ALUControl = 'b0000;
         endcase
     end
 endmodule

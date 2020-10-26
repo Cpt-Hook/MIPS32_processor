@@ -27,7 +27,7 @@ module alu
                         result[i+:8] = srcA[i+:8] + srcB[i+:8];
                 end
             end
-            default : result = 'h??_??_??_??; // is this OK?
+            default : result = 'h00_00_00_00; // is this OK?
         endcase
     end
 endmodule
