@@ -147,8 +147,8 @@ module alu_op_decoder(
             'b11: begin
                 if (funct == 'b010000) // only 'b010000 funct valid
                     case (shamt)
-                        'b000000: ALUControl = 'b1000; //addition byte after byte
-                        'b001000: ALUControl = 'b0111; //saturated addition byte after byte
+                        'b00000: ALUControl = 'b1000; //addition byte after byte
+                        'b00100: ALUControl = 'b1001; //saturated addition byte after byte
                          default: ALUControl = 'b0000;
                     endcase
                 else 
