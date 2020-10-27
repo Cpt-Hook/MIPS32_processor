@@ -17,6 +17,9 @@ module alu(
             'b0001: result = srcA | srcB;
             'b0011: result = srcA ^ srcB;
             'b0111: result = srcA < srcB;
+            'b1100: result = srcB << srcA;
+            'b1110: result = srcB >> srcA;
+            'b1111: result = srcB >>> srcA;
             'b1000: begin // sum byte by byte
                 for (i = 0; i < 32; i = i + 8) begin
                     result[i+:8] = srcA[i+:8] + srcB[i+:8];

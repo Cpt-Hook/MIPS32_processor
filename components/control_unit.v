@@ -86,6 +86,17 @@ module main_decoder(
                 PCSrcJal = 'b1;
                 PCSrcJr = 'b0;
             end
+            'b000010: begin // j
+                RegWrite = 'b0;
+                RegDst = 'b0;
+                ALUSrc = 'b0;
+                ALUOp = 'b00;
+                Branch = 'b0;
+                MemWrite = 'b0;
+                MemToReg = 'b0;
+                PCSrcJal = 'b1;
+                PCSrcJr = 'b0;
+            end
             'b000111: begin // jr
                 RegWrite = 'b0;
                 RegDst = 'b0;
@@ -141,6 +152,9 @@ module alu_op_decoder(
                     'b100100: ALUControl = 'b0000; //and
                     'b100101: ALUControl = 'b0001; //or
                     'b101010: ALUControl = 'b0111; //slt
+                    'b000100: ALUControl = 'b1100; //sllv
+                    'b000110: ALUControl = 'b1110; //srlv
+                    'b000111: ALUControl = 'b1111; //srav
                      default: ALUControl = 'b0000;
                 endcase
             end
