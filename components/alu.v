@@ -1,5 +1,5 @@
 module alu(
-    input [31:0] srcA, srcB,
+    input signed [31:0] srcA, srcB,
     input [3:0] ALUControl,
     output reg [31:0] result,
     output zero
@@ -16,7 +16,7 @@ module alu(
             'b0000: result = srcA & srcB;
             'b0001: result = srcA | srcB;
             'b0011: result = srcA ^ srcB;
-            'b0111: result = $signed(srcA) < $signed(srcB);
+            'b0111: result = srcA < srcB;
             'b1000: begin // sum byte by byte
                 for (i = 0; i < 32; i = i + 8) begin
                     result[i+:8] = srcA[i+:8] + srcB[i+:8];

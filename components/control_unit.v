@@ -137,7 +137,7 @@ module alu_op_decoder(
             'b10: begin
                 case (funct)
                     'b100000: ALUControl = 'b0010; //addition
-                    'b000010: ALUControl = 'b0110; //subtraction
+                    'b100010: ALUControl = 'b0110; //subtraction
                     'b100100: ALUControl = 'b0000; //and
                     'b100101: ALUControl = 'b0001; //or
                     'b101010: ALUControl = 'b0111; //slt

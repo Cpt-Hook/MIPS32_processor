@@ -5,6 +5,12 @@ module register_block(
     output [31:0] rd1, rd2
 );
 
+    integer i;
+    initial begin
+        $dumpfile("test");
+        for(i = 0; i < 32; i = i + 1) $dumpvars(0, registers[i]);
+    end
+
     reg [31:0] registers [31:0];
 
     assign rd1 = registers[a1];
